@@ -41,32 +41,35 @@ class ViewController: UIViewController {
         alert.addAction(okButton)
         self.present(alert, animated: true,  completion: nil)
          
-         */
+        */
         
         if usernameText.text == "" {
-            
-            let alert = UIAlertController(title: "Error!", message: "Username Not Found", preferredStyle: UIAlertController.Style.alert)
-            let okButton = UIAlertAction(title: "OK"  , style: UIAlertAction.Style.cancel, handler: nil)
-            alert.addAction(okButton)
-            self.present(alert, animated: true)
-        } else if passwordText.text == "" {
-            
-            let alert = UIAlertController(title: "Error!", message: "Password Not Found", preferredStyle: UIAlertController.Style.alert)
-            let okButton = UIAlertAction(title: "OK"  , style: UIAlertAction.Style.cancel, handler: nil)
-            alert.addAction(okButton)
-            self.present(alert, animated: true)
-        } else if passwordText.text != passwordAgainText.text {
-            
-            let alert = UIAlertController(title: "Error!", message: "Password Don't Match", preferredStyle: UIAlertController.Style.alert)
-            let okButton = UIAlertAction(title: "OK"  , style: UIAlertAction.Style.cancel, handler: nil)
-            alert.addAction(okButton)
-            self.present(alert, animated: true)
-        } else {
-            let alert = UIAlertController(title: "Success!", message: "Signed Up!", preferredStyle: UIAlertController.Style.alert)
-            let okButton = UIAlertAction(title: "OK"  , style: UIAlertAction.Style.cancel, handler: nil)
-            alert.addAction(okButton)
-            self.present(alert, animated: true)
+            MakeAlert(alertTitle: "Error", alertMessage: "Username Cannot Be Empty")
         }
+        
+        else if passwordText.text == "" {
+            MakeAlert(alertTitle: "Error", alertMessage: "Password Cannot Be Empty")
+        }
+        
+        else if passwordText.text != passwordAgainText.text {
+            MakeAlert(alertTitle: "Error", alertMessage: "Password Do Not Match")
+        }
+        
+        else {
+            MakeAlert(alertTitle: "Success", alertMessage: "You Signed Up Perfectly")
+        }
+        
+        
+        
+    }
+        
+    func MakeAlert(alertTitle : String, alertMessage : String){
+        
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true)
+        
     }
     
 }
